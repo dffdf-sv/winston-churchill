@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winston Churchill</title>
-    <link rel="icon" href="https://i.ytimg.com/vi/PkQ8uFiqx4k/maxresdefault.jpg" type="image/jpeg">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect fill='%23FF0000' width='48' height='48'/><polygon points='18,12 18,36 32,24' fill='white'/></svg>" type="image/svg+xml">
     <style>
         * {
             margin: 0;
@@ -62,51 +62,51 @@
         /* Luxury Cinematic - Soft elegant glow */
         .glow-luxury {
             position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 165, 0, 0.08) 0%, rgba(255, 140, 0, 0.02) 40%, transparent 80%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.12) 0%, rgba(255, 140, 0, 0.03) 40%, transparent 80%);
             border-radius: 50%;
             filter: blur(100px);
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         /* Dark Corporate - Minimal glow accent */
         .glow-corporate {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: conic-gradient(from 0deg, rgba(255, 140, 0, 0.04), rgba(255, 100, 0, 0.02), rgba(255, 140, 0, 0.04));
+            width: 500px;
+            height: 500px;
+            background: conic-gradient(from 0deg, rgba(255, 140, 0, 0.05), rgba(255, 100, 0, 0.02), rgba(255, 140, 0, 0.05));
             border-radius: 50%;
             filter: blur(120px);
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.45;
         }
 
         /* Dramatic Neon - Sharp spotlight */
         .glow-neon {
             position: absolute;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.8) 0%, rgba(255, 80, 0, 0.6) 15%, rgba(255, 165, 0, 0.3) 35%, transparent 70%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.9) 0%, rgba(255, 80, 0, 0.7) 15%, rgba(255, 165, 0, 0.4) 35%, transparent 70%);
             border-radius: 50%;
-            filter: blur(25px);
+            filter: blur(30px);
             pointer-events: none;
-            opacity: 0.75;
-            box-shadow: 0 0 100px rgba(255, 140, 0, 0.6), 0 0 200px rgba(255, 100, 0, 0.3);
+            opacity: 0.85;
+            box-shadow: 0 0 120px rgba(255, 140, 0, 0.7), 0 0 250px rgba(255, 100, 0, 0.4);
         }
 
         /* Minimal Premium - Ultra subtle frame */
         .frame {
             position: relative;
             z-index: 2;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 165, 0, 0.03) 50%, rgba(255, 140, 0, 0.08) 100%);
-            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 165, 0, 0.05) 50%, rgba(255, 140, 0, 0.1) 100%);
+            border-radius: 16px;
             box-shadow: 
-                inset 0 1px 0 rgba(255, 255, 255, 0.05),
-                0 20px 60px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(255, 140, 0, 0.08);
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                0 0 40px rgba(255, 140, 0, 0.12);
             backdrop-filter: blur(10px);
         }
 
@@ -116,15 +116,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px;
             width: 100%;
         }
 
         iframe {
             display: block;
-            border-radius: 10px;
+            border-radius: 14px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             height: auto;
             aspect-ratio: 16 / 9;
             background: #000;
@@ -132,18 +132,18 @@
         }
 
         .frame-inner {
-            padding: 1px;
+            padding: 2px;
             background: #0a0e27;
-            border-radius: 10px;
+            border-radius: 14px;
             overflow: hidden;
         }
 
         /* Premium corner accents */
         .corner-accent {
             position: absolute;
-            width: 1px;
-            height: 20px;
-            background: linear-gradient(180deg, rgba(255, 140, 0, 0.3) 0%, transparent 100%);
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, rgba(255, 140, 0, 0.4) 0%, transparent 100%);
         }
 
         .corner-tl { top: 0; left: 0; }
@@ -152,38 +152,68 @@
         .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
 
         /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .glow-luxury {
+                width: 500px;
+                height: 500px;
+            }
+
+            .glow-corporate {
+                width: 400px;
+                height: 400px;
+            }
+
+            .glow-neon {
+                width: 300px;
+                height: 300px;
+            }
+
+            iframe {
+                max-width: 1000px;
+            }
+        }
+
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
+            }
+
+            .content-wrapper {
+                padding: 20px;
             }
 
             .glow-luxury {
-                width: 350px;
-                height: 350px;
+                width: 400px;
+                height: 400px;
                 filter: blur(80px);
             }
 
             .glow-corporate {
-                width: 300px;
-                height: 300px;
+                width: 320px;
+                height: 320px;
                 filter: blur(100px);
             }
 
             .glow-neon {
-                width: 200px;
-                height: 200px;
-                filter: blur(20px);
+                width: 250px;
+                height: 250px;
+                filter: blur(25px);
             }
 
             iframe {
-                min-height: 250px;
+                min-height: 280px;
+                max-width: 800px;
             }
         }
 
         @media (max-width: 480px) {
+            .content-wrapper {
+                padding: 15px;
+            }
+
             .glow-luxury {
-                width: 280px;
-                height: 280px;
+                width: 300px;
+                height: 300px;
                 filter: blur(60px);
             }
 
@@ -194,17 +224,22 @@
             }
 
             .glow-neon {
-                width: 150px;
-                height: 150px;
-                box-shadow: 0 0 60px rgba(255, 140, 0, 0.5), 0 0 120px rgba(255, 100, 0, 0.2);
+                width: 180px;
+                height: 180px;
+                box-shadow: 0 0 80px rgba(255, 140, 0, 0.6), 0 0 160px rgba(255, 100, 0, 0.3);
             }
 
             iframe {
                 min-height: 200px;
+                max-width: 600px;
             }
 
             .frame {
                 padding: 1px;
+            }
+
+            .corner-accent {
+                height: 20px;
             }
         }
 
@@ -266,8 +301,8 @@
             
             <div class="frame-inner">
                 <iframe 
-                    width="1200" 
-                    height="630" 
+                    width="1400" 
+                    height="788" 
                     src="https://www.youtube-nocookie.com/embed/PkQ8uFiqx4k?si=z4WurYjUG85A2RdA" 
                     title="YouTube video player" 
                     frameborder="0" 
@@ -327,18 +362,18 @@
             // Luxury Cinematic - slowest (elegant, sweeping motion)
             currentXSlow += (targetX - currentXSlow) * 0.03;
             currentYSlow += (targetY - currentYSlow) * 0.03;
-            glowLuxury.style.left = (currentXSlow - 225) + 'px';
-            glowLuxury.style.top = (currentYSlow - 225) + 'px';
+            glowLuxury.style.left = (currentXSlow - 300) + 'px';
+            glowLuxury.style.top = (currentYSlow - 300) + 'px';
 
             // Dark Corporate - medium speed (subtle accent)
             currentXMedium += (targetX - currentXMedium) * 0.05;
             currentYMedium += (targetY - currentYMedium) * 0.05;
-            glowCorporate.style.left = (currentXMedium - 175) + 'px';
-            glowCorporate.style.top = (currentYMedium - 175) + 'px';
+            glowCorporate.style.left = (currentXMedium - 250) + 'px';
+            glowCorporate.style.top = (currentYMedium - 250) + 'px';
 
             // Dramatic Neon - instant response (sharp spotlight)
-            glowNeon.style.left = (targetX - 140) + 'px';
-            glowNeon.style.top = (targetY - 140) + 'px';
+            glowNeon.style.left = (targetX - 175) + 'px';
+            glowNeon.style.top = (targetY - 175) + 'px';
 
             requestAnimationFrame(animate);
         }
