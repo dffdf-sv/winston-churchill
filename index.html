@@ -12,13 +12,27 @@
         }
 
         body {
-            background-color: #0a0e27;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 50%, #0a0e27 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Background layers for premium cinematic feel */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .glow-container {
@@ -31,29 +45,54 @@
             z-index: 1;
         }
 
-        /* Subtle & Cinematic Glow */
-        .glow-subtle {
+        /* Dramatic Neon - Core spotlight */
+        .glow-neon {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 165, 0, 0.08) 40%, transparent 80%);
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 1) 0%, rgba(255, 80, 0, 0.8) 15%, rgba(255, 165, 0, 0.4) 35%, transparent 70%);
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(25px);
+            pointer-events: none;
+            opacity: 0.85;
+            box-shadow: 0 0 100px rgba(255, 140, 0, 0.8), 0 0 200px rgba(255, 100, 0, 0.4);
+        }
+
+        /* Movie Intro - Cinematic halo */
+        .glow-cinematic {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.15) 0%, rgba(255, 140, 0, 0.05) 40%, transparent 80%);
+            border-radius: 50%;
+            filter: blur(100px);
             pointer-events: none;
             opacity: 0.6;
         }
 
-        /* Intense Neon Spotlight */
-        .glow-intense {
+        /* Elegant subtle accent */
+        .glow-elegant {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.9) 0%, rgba(255, 100, 0, 0.6) 25%, rgba(255, 165, 0, 0.2) 50%, transparent 75%);
+            width: 600px;
+            height: 600px;
+            background: conic-gradient(from 0deg, rgba(255, 165, 0, 0.08), rgba(255, 140, 0, 0.03), rgba(255, 165, 0, 0.08));
             border-radius: 50%;
-            filter: blur(30px);
+            filter: blur(120px);
             pointer-events: none;
-            opacity: 0.8;
-            box-shadow: 0 0 80px rgba(255, 140, 0, 0.6);
+            opacity: 0.4;
+        }
+
+        /* Minimal premium frame */
+        .frame {
+            position: relative;
+            z-index: 2;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.3) 0%, rgba(255, 165, 0, 0.1) 50%, rgba(255, 140, 0, 0.2) 100%);
+            border-radius: 12px;
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(255, 140, 0, 0.15);
         }
 
         .content-wrapper {
@@ -69,12 +108,33 @@
         iframe {
             display: block;
             border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.2);
             width: 100%;
             max-width: 1200px;
             height: auto;
             aspect-ratio: 16 / 9;
+            background: #000;
+            border: none;
         }
+
+        .frame-inner {
+            padding: 1px;
+            background: #0a0e27;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Premium branding elements */
+        .corner-accent {
+            position: absolute;
+            width: 1px;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(255, 140, 0, 0.6) 0%, transparent 100%);
+        }
+
+        .corner-tl { top: 0; left: 0; }
+        .corner-tr { top: 0; right: 0; }
+        .corner-bl { bottom: 0; left: 0; transform: rotate(180deg); }
+        .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -82,14 +142,22 @@
                 padding: 10px;
             }
 
-            .glow-subtle {
-                width: 250px;
-                height: 250px;
+            .glow-neon {
+                width: 200px;
+                height: 200px;
+                filter: blur(20px);
             }
 
-            .glow-intense {
-                width: 150px;
-                height: 150px;
+            .glow-cinematic {
+                width: 350px;
+                height: 350px;
+                filter: blur(80px);
+            }
+
+            .glow-elegant {
+                width: 450px;
+                height: 450px;
+                filter: blur(100px);
             }
 
             iframe {
@@ -98,66 +166,109 @@
         }
 
         @media (max-width: 480px) {
-            .glow-subtle {
-                width: 200px;
-                height: 200px;
+            .glow-neon {
+                width: 150px;
+                height: 150px;
+                box-shadow: 0 0 60px rgba(255, 140, 0, 0.6), 0 0 120px rgba(255, 100, 0, 0.2);
             }
 
-            .glow-intense {
-                width: 120px;
-                height: 120px;
+            .glow-cinematic {
+                width: 280px;
+                height: 280px;
+                filter: blur(60px);
+            }
+
+            .glow-elegant {
+                width: 350px;
+                height: 350px;
+                filter: blur(80px);
             }
 
             iframe {
                 min-height: 200px;
             }
+
+            .frame {
+                padding: 1px;
+            }
+        }
+
+        /* Animation for entrance */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content-wrapper {
+            animation: fadeIn 0.8s ease-out;
         }
     </style>
 </head>
 <body>
     <div class="glow-container">
-        <div class="glow-subtle" id="glowSubtle"></div>
-        <div class="glow-intense" id="glowIntense"></div>
+        <div class="glow-elegant" id="glowElegant"></div>
+        <div class="glow-cinematic" id="glowCinematic"></div>
+        <div class="glow-neon" id="glowNeon"></div>
     </div>
     
     <div class="content-wrapper">
-        <iframe 
-            width="1200" 
-            height="630" 
-            src="https://www.youtube-nocookie.com/embed/PkQ8uFiqx4k?si=z4WurYjUG85A2RdA" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+        <div class="frame">
+            <div class="corner-accent corner-tl"></div>
+            <div class="corner-accent corner-tr"></div>
+            <div class="corner-accent corner-bl"></div>
+            <div class="corner-accent corner-br"></div>
+            
+            <div class="frame-inner">
+                <iframe 
+                    width="1200" 
+                    height="630" 
+                    src="https://www.youtube-nocookie.com/embed/PkQ8uFiqx4k?si=z4WurYjUG85A2RdA" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 
     <script>
-        const glowSubtle = document.getElementById('glowSubtle');
-        const glowIntense = document.getElementById('glowIntense');
+        const glowNeon = document.getElementById('glowNeon');
+        const glowCinematic = document.getElementById('glowCinematic');
+        const glowElegant = document.getElementById('glowElegant');
         
         let targetX = window.innerWidth / 2;
         let targetY = window.innerHeight / 2;
-        let currentX = targetX;
-        let currentY = targetY;
+        let currentXSlow = targetX;
+        let currentYSlow = targetY;
+        let currentXMedium = targetX;
+        let currentYMedium = targetY;
 
         document.addEventListener('mousemove', (e) => {
             targetX = e.clientX;
             targetY = e.clientY;
         });
 
-        // Smooth animation loop with different speeds
         function animate() {
-            // Subtle glow follows slower (cinematic effect)
-            currentX += (targetX - currentX) * 0.08;
-            currentY += (targetY - currentY) * 0.08;
+            // Elegant accent - slowest (cinematic movie intro feel)
+            currentXSlow += (targetX - currentXSlow) * 0.04;
+            currentYSlow += (targetY - currentYSlow) * 0.04;
+            glowElegant.style.left = (currentXSlow - 300) + 'px';
+            glowElegant.style.top = (currentYSlow - 300) + 'px';
 
-            glowSubtle.style.left = (currentX - 200) + 'px';
-            glowSubtle.style.top = (currentY - 200) + 'px';
+            // Cinematic halo - medium speed
+            currentXMedium += (targetX - currentXMedium) * 0.06;
+            currentYMedium += (targetY - currentYMedium) * 0.06;
+            glowCinematic.style.left = (currentXMedium - 250) + 'px';
+            glowCinematic.style.top = (currentYMedium - 250) + 'px';
 
-            // Intense glow follows faster (responsive spotlight)
-            glowIntense.style.left = (targetX - 125) + 'px';
-            glowIntense.style.top = (targetY - 125) + 'px';
+            // Dramatic neon - instant response (sharp spotlight)
+            glowNeon.style.left = (targetX - 140) + 'px';
+            glowNeon.style.top = (targetY - 140) + 'px';
 
             requestAnimationFrame(animate);
         }
@@ -168,6 +279,10 @@
         window.addEventListener('resize', () => {
             targetX = window.innerWidth / 2;
             targetY = window.innerHeight / 2;
+            currentXSlow = targetX;
+            currentYSlow = targetY;
+            currentXMedium = targetX;
+            currentYMedium = targetY;
         });
     </script>
 </body>
