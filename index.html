@@ -31,14 +31,29 @@
             z-index: 1;
         }
 
-        .glow {
+        /* Subtle & Cinematic Glow */
+        .glow-subtle {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.6) 0%, rgba(255, 165, 0, 0.3) 30%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, rgba(255, 165, 0, 0.08) 40%, transparent 80%);
             border-radius: 50%;
-            filter: blur(40px);
+            filter: blur(80px);
             pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Intense Neon Spotlight */
+        .glow-intense {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.9) 0%, rgba(255, 100, 0, 0.6) 25%, rgba(255, 165, 0, 0.2) 50%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(30px);
+            pointer-events: none;
+            opacity: 0.8;
+            box-shadow: 0 0 80px rgba(255, 140, 0, 0.6);
         }
 
         .content-wrapper {
@@ -47,18 +62,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            width: 100%;
         }
 
         iframe {
             display: block;
             border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.2);
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .glow-subtle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .glow-intense {
+                width: 150px;
+                height: 150px;
+            }
+
+            iframe {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glow-subtle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .glow-intense {
+                width: 120px;
+                height: 120px;
+            }
+
+            iframe {
+                min-height: 200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="glow-container">
-        <div class="glow" id="glow"></div>
+        <div class="glow-subtle" id="glowSubtle"></div>
+        <div class="glow-intense" id="glowIntense"></div>
     </div>
     
     <div class="content-wrapper">
@@ -74,14 +133,41 @@
     </div>
 
     <script>
-        const glow = document.getElementById('glow');
+        const glowSubtle = document.getElementById('glowSubtle');
+        const glowIntense = document.getElementById('glowIntense');
         
+        let targetX = window.innerWidth / 2;
+        let targetY = window.innerHeight / 2;
+        let currentX = targetX;
+        let currentY = targetY;
+
         document.addEventListener('mousemove', (e) => {
-            const x = e.clientX - 150; // Center the glow (300px / 2)
-            const y = e.clientY - 150;
-            
-            glow.style.left = x + 'px';
-            glow.style.top = y + 'px';
+            targetX = e.clientX;
+            targetY = e.clientY;
+        });
+
+        // Smooth animation loop with different speeds
+        function animate() {
+            // Subtle glow follows slower (cinematic effect)
+            currentX += (targetX - currentX) * 0.08;
+            currentY += (targetY - currentY) * 0.08;
+
+            glowSubtle.style.left = (currentX - 200) + 'px';
+            glowSubtle.style.top = (currentY - 200) + 'px';
+
+            // Intense glow follows faster (responsive spotlight)
+            glowIntense.style.left = (targetX - 125) + 'px';
+            glowIntense.style.top = (targetY - 125) + 'px';
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Handle window resize for responsive mobile
+        window.addEventListener('resize', () => {
+            targetX = window.innerWidth / 2;
+            targetY = window.innerHeight / 2;
         });
     </script>
 </body>
