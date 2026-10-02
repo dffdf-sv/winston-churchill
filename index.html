@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winston Churchill</title>
+    <link rel="icon" href="https://i.ytimg.com/vi/PkQ8uFiqx4k/maxresdefault.jpg" type="image/jpeg">
     <style>
         * {
             margin: 0;
@@ -30,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.6) 100%);
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0.75) 100%);
             pointer-events: none;
             z-index: 3;
         }
@@ -43,7 +44,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.03) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.02) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -58,54 +59,54 @@
             z-index: 1;
         }
 
-        /* Dramatic Neon - Core spotlight (reduced opacity) */
+        /* Luxury Cinematic - Soft elegant glow */
+        .glow-luxury {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.08) 0%, rgba(255, 140, 0, 0.02) 40%, transparent 80%);
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Dark Corporate - Minimal glow accent */
+        .glow-corporate {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: conic-gradient(from 0deg, rgba(255, 140, 0, 0.04), rgba(255, 100, 0, 0.02), rgba(255, 140, 0, 0.04));
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        /* Dramatic Neon - Sharp spotlight */
         .glow-neon {
             position: absolute;
             width: 280px;
             height: 280px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.7) 0%, rgba(255, 80, 0, 0.5) 15%, rgba(255, 165, 0, 0.25) 35%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.8) 0%, rgba(255, 80, 0, 0.6) 15%, rgba(255, 165, 0, 0.3) 35%, transparent 70%);
             border-radius: 50%;
             filter: blur(25px);
             pointer-events: none;
-            opacity: 0.65;
-            box-shadow: 0 0 80px rgba(255, 140, 0, 0.5), 0 0 160px rgba(255, 100, 0, 0.25);
+            opacity: 0.75;
+            box-shadow: 0 0 100px rgba(255, 140, 0, 0.6), 0 0 200px rgba(255, 100, 0, 0.3);
         }
 
-        /* Movie Intro - Cinematic halo (reduced opacity) */
-        .glow-cinematic {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 165, 0, 0.1) 0%, rgba(255, 140, 0, 0.03) 40%, transparent 80%);
-            border-radius: 50%;
-            filter: blur(100px);
-            pointer-events: none;
-            opacity: 0.45;
-        }
-
-        /* Elegant subtle accent (reduced opacity) */
-        .glow-elegant {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: conic-gradient(from 0deg, rgba(255, 165, 0, 0.05), rgba(255, 140, 0, 0.02), rgba(255, 165, 0, 0.05));
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        /* Ultra-premium glassy frame */
+        /* Minimal Premium - Ultra subtle frame */
         .frame {
             position: relative;
             z-index: 2;
             padding: 1px;
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 165, 0, 0.05) 50%, rgba(255, 140, 0, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 165, 0, 0.03) 50%, rgba(255, 140, 0, 0.08) 100%);
             border-radius: 12px;
             box-shadow: 
-                inset 0 1px 0 rgba(255, 255, 255, 0.08),
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 140, 0, 0.1);
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(255, 140, 0, 0.08);
             backdrop-filter: blur(10px);
         }
 
@@ -142,7 +143,7 @@
             position: absolute;
             width: 1px;
             height: 20px;
-            background: linear-gradient(180deg, rgba(255, 140, 0, 0.4) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(255, 140, 0, 0.3) 0%, transparent 100%);
         }
 
         .corner-tl { top: 0; left: 0; }
@@ -156,22 +157,22 @@
                 padding: 10px;
             }
 
-            .glow-neon {
-                width: 200px;
-                height: 200px;
-                filter: blur(20px);
-            }
-
-            .glow-cinematic {
+            .glow-luxury {
                 width: 350px;
                 height: 350px;
                 filter: blur(80px);
             }
 
-            .glow-elegant {
-                width: 450px;
-                height: 450px;
+            .glow-corporate {
+                width: 300px;
+                height: 300px;
                 filter: blur(100px);
+            }
+
+            .glow-neon {
+                width: 200px;
+                height: 200px;
+                filter: blur(20px);
             }
 
             iframe {
@@ -180,22 +181,22 @@
         }
 
         @media (max-width: 480px) {
-            .glow-neon {
-                width: 150px;
-                height: 150px;
-                box-shadow: 0 0 50px rgba(255, 140, 0, 0.4), 0 0 100px rgba(255, 100, 0, 0.15);
-            }
-
-            .glow-cinematic {
+            .glow-luxury {
                 width: 280px;
                 height: 280px;
                 filter: blur(60px);
             }
 
-            .glow-elegant {
-                width: 350px;
-                height: 350px;
+            .glow-corporate {
+                width: 250px;
+                height: 250px;
                 filter: blur(80px);
+            }
+
+            .glow-neon {
+                width: 150px;
+                height: 150px;
+                box-shadow: 0 0 60px rgba(255, 140, 0, 0.5), 0 0 120px rgba(255, 100, 0, 0.2);
             }
 
             iframe {
@@ -251,8 +252,8 @@
 </head>
 <body>
     <div class="glow-container">
-        <div class="glow-elegant" id="glowElegant"></div>
-        <div class="glow-cinematic" id="glowCinematic"></div>
+        <div class="glow-luxury" id="glowLuxury"></div>
+        <div class="glow-corporate" id="glowCorporate"></div>
         <div class="glow-neon" id="glowNeon"></div>
     </div>
     
@@ -279,8 +280,8 @@
 
     <script>
         const glowNeon = document.getElementById('glowNeon');
-        const glowCinematic = document.getElementById('glowCinematic');
-        const glowElegant = document.getElementById('glowElegant');
+        const glowCorporate = document.getElementById('glowCorporate');
+        const glowLuxury = document.getElementById('glowLuxury');
         
         let targetX = window.innerWidth / 2;
         let targetY = window.innerHeight / 2;
@@ -323,19 +324,19 @@
         }
 
         function animate() {
-            // Elegant accent - slowest (cinematic movie intro feel)
-            currentXSlow += (targetX - currentXSlow) * 0.04;
-            currentYSlow += (targetY - currentYSlow) * 0.04;
-            glowElegant.style.left = (currentXSlow - 300) + 'px';
-            glowElegant.style.top = (currentYSlow - 300) + 'px';
+            // Luxury Cinematic - slowest (elegant, sweeping motion)
+            currentXSlow += (targetX - currentXSlow) * 0.03;
+            currentYSlow += (targetY - currentYSlow) * 0.03;
+            glowLuxury.style.left = (currentXSlow - 225) + 'px';
+            glowLuxury.style.top = (currentYSlow - 225) + 'px';
 
-            // Cinematic halo - medium speed
-            currentXMedium += (targetX - currentXMedium) * 0.06;
-            currentYMedium += (targetY - currentYMedium) * 0.06;
-            glowCinematic.style.left = (currentXMedium - 250) + 'px';
-            glowCinematic.style.top = (currentYMedium - 250) + 'px';
+            // Dark Corporate - medium speed (subtle accent)
+            currentXMedium += (targetX - currentXMedium) * 0.05;
+            currentYMedium += (targetY - currentYMedium) * 0.05;
+            glowCorporate.style.left = (currentXMedium - 175) + 'px';
+            glowCorporate.style.top = (currentYMedium - 175) + 'px';
 
-            // Dramatic neon - instant response (sharp spotlight)
+            // Dramatic Neon - instant response (sharp spotlight)
             glowNeon.style.left = (targetX - 140) + 'px';
             glowNeon.style.top = (targetY - 140) + 'px';
 
